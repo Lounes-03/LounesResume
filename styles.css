@@ -113,7 +113,7 @@ article {
 
 section{
   margin: 1em;
-  padding: 1em;
+  padding: 0.1em;
 }
 
 header, main, footer {
@@ -207,12 +207,12 @@ a .fab {
 }
 
 
-.uni, .job {
+.uni, .job , .training{
   text-transform: capitalize;
   
 }
 
-.uni span, .job span {
+.uni span, .job span, .training span {
   color: #889499;
   text-decoration: underline;
 }
@@ -238,6 +238,8 @@ footer {
 
   .skills .column {
     max-width: 100%;
+    
+    ;
   }
 
   footer {
