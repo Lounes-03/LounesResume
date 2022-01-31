@@ -335,17 +335,24 @@
               name="name"
               required
             />
-            <label>
-              Your email:
-              <input type="email" name="_replyto" />
-            </label>
-            <label>
-              Your message:
-              <textarea name="message"></textarea>
-            </label>
+
+            <input
+              type="email"
+              name="_replyto"
+              id="input-email"
+              placeholder="Email address"
+              required
+            />
+
+            <textarea
+              name="message"
+              id="input-message"
+              placeholder="Your Message"
+              required
+            ></textarea>
           </div>
 
-          <button id="input-submit" type="submit">Send</button>
+          <input type="submit" value="Submit" id="input-submit" />
         </form>
       </section>
     </main>
