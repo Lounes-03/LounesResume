@@ -291,7 +291,7 @@
       </section>
       <section id="contactme">
         <h3>Contact Me</h3>
-        <form
+        <!-- <form
           class="cf"
           action="https://formspree.io/f/xqknppwp"
           method="post"
@@ -325,25 +325,27 @@
           </div>
 
           <input type="submit" value="Submit" id="input-submit" />
-        </form>
-        <form action="https://formspree.io/f/xqknppwp" method="POST">
-          <input
-            type="text"
-            id="input-name"
-            placeholder="Name"
-            name="name"
-            required
-          />
-          <label>
-            Your email:
-            <input type="email" name="_replyto" />
-          </label>
-          <label>
-            Your message:
-            <textarea name="message"></textarea>
-          </label>
-          <!-- your other form fields go here -->
-          <button type="submit">Send</button>
+        </form> -->
+        <form class="cf" action="https://formspree.io/f/xqknppwp" method="POST">
+          <div class="half left cf">
+            <input
+              type="text"
+              id="input-name"
+              placeholder="Name"
+              name="name"
+              required
+            />
+            <label>
+              Your email:
+              <input type="email" name="_replyto" />
+            </label>
+            <label>
+              Your message:
+              <textarea name="message"></textarea>
+            </label>
+          </div>
+
+          <button id="input-submit" type="submit">Send</button>
         </form>
       </section>
     </main>
