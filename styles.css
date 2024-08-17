@@ -290,3 +290,10 @@ form {
   margin-right: 3%; 
 }
 
+.text-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Black with 50% opacity */
+  padding: 20px;
+  color: white;
+  /* White text color */
+}
