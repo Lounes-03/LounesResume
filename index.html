@@ -6,8 +6,18 @@
     <title>Lounes Moussaoui | Resume</title>
 
     <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-    <script src="https://kit.fontawesome.com/fb70b32410.js" crossorigin="anonymous"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/fb70b32410.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
     <style>
       :root {
@@ -15,7 +25,6 @@
         --secondary: #0bb5f4;
         --dark: #0f3057;
         --light: #f8f9fa;
-        --accent: #eaf6ff;
       }
 
       * {
@@ -25,22 +34,29 @@
 
       body {
         margin: 0;
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
         color: #222;
         background-color: var(--light);
       }
 
-      /* Navbar */
+      /* NAVIGATION */
       nav {
         position: fixed;
         width: 100%;
-        background-color: rgba(0, 123, 158, 0.95);
+        top: 0;
+        background-color: transparent;
         color: white;
         display: flex;
         justify-content: center;
-        padding: 0.6em 0;
+        padding: 0.8em 0;
         z-index: 1000;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        transition: background-color 0.6s ease, backdrop-filter 0.6s ease;
+      }
+
+      nav.scrolled {
+        background-color: rgba(0, 123, 158, 0.95);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
       }
 
       nav ul {
@@ -49,6 +65,7 @@
         gap: 1.5em;
         margin: 0;
         padding: 0;
+        flex-wrap: wrap;
       }
 
       nav ul li a {
@@ -60,29 +77,60 @@
       }
 
       nav ul li a:hover {
-        color: var(--accent);
+        color: #ffefef;
+        transform: scale(1.05);
       }
 
-      /* Hero Section */
+      /* HEADER WITH BACKGROUND IMAGE + ANIMATED GRADIENT */
       header {
-        background: linear-gradient(to bottom right, var(--dark), var(--primary));
+        position: relative;
+        height: 100vh;
         color: white;
         text-align: center;
-        padding: 8em 2em 5em;
-        background-image: url('./img/background.jpg');
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-image: linear-gradient(
+            rgba(15, 48, 87, 0.75),
+            rgba(15, 48, 87, 0.75)
+          ),
+          url("./img/background.jpg");
         background-size: cover;
         background-position: center;
-        position: relative;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        padding-top: 100px;
+        overflow: hidden;
       }
 
-      header::before {
-        content: '';
+      header .overlay {
         position: absolute;
         top: 0;
+        left: 0;
         right: 0;
         bottom: 0;
-        left: 0;
-        background: rgba(0, 0, 0, 0.55);
+        background: linear-gradient(
+          -45deg,
+          rgba(15, 48, 87, 0.6),
+          rgba(0, 123, 158, 0.5),
+          rgba(11, 181, 244, 0.5)
+        );
+        background-size: 400% 400%;
+        animation: gradientShift 12s ease infinite;
+        z-index: 0;
+      }
+
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
       }
 
       header * {
@@ -92,54 +140,110 @@
 
       header img {
         border-radius: 50%;
-        width: 140px;
+        width: 150px;
         border: 3px solid white;
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+        transition: transform 0.2s ease-out;
       }
 
       header h1 {
-        font-size: 2em;
-        margin: 0.8em 0 0.3em;
+        font-size: 2.3em;
+        margin: 1em 0 0.3em;
       }
 
       header p {
         max-width: 700px;
         margin: auto;
         font-weight: 300;
+        padding: 0 1em;
       }
 
-      /* Social Icons */
       .socials a {
         color: white;
-        margin: 0 10px;
-        font-size: 1.3em;
-        transition: 0.3s;
+        margin: 0 12px;
+        font-size: 1.5em;
+        transition: 0.3s ease;
       }
 
       .socials a:hover {
-        color: var(--secondary);
+        color: #fff9;
         transform: scale(1.2);
       }
 
-      /* Section styling */
+      #contacts {
+        margin-top: 40px;
+        background: rgba(255, 255, 255, 0.08);
+        padding: 15px 30px;
+        border-radius: 12px;
+        display: inline-block;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+        animation: fadeInUp 1s ease forwards;
+      }
+
+      #contacts ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2em;
+      }
+
+      #contacts li {
+        font-size: 1.05em;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      #contacts a {
+        color: #ffffff;
+        text-decoration: none;
+        transition: color 0.3s ease, transform 0.2s;
+      }
+
+      #contacts a:hover {
+        color: #0bb5f4;
+        transform: scale(1.05);
+      }
+
+      #contacts i {
+        color: #0bb5f4;
+        font-size: 1.2em;
+      }
+
+      @media (max-width: 768px) {
+        #contacts ul {
+          flex-direction: column;
+          gap: 1em;
+        }
+      }
+
+      /* MAIN SECTIONS */
       main section {
         padding: 4em 10%;
         background-color: white;
-        margin-bottom: 1em;
-        border-radius: 12px;
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        margin: 2em auto;
+        border-radius: 14px;
+        max-width: 1100px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease;
       }
 
       main section:hover {
-        transform: translateY(-5px);
+        transform: translateY(-4px);
       }
 
       h3 {
         color: var(--dark);
         border-left: 5px solid var(--secondary);
-        padding-left: 10px;
+        padding-left: 12px;
         text-transform: uppercase;
+        margin-bottom: 0.5em;
       }
 
       ul.job-description li {
@@ -167,7 +271,7 @@
         margin-bottom: 0.5em;
       }
 
-      /* Contact Section */
+      /* CONTACT FORM */
       form {
         display: flex;
         flex-direction: column;
@@ -176,10 +280,11 @@
         margin: 2em auto;
       }
 
-      input, textarea {
+      input,
+      textarea {
         padding: 1em;
-        border: 1px solid #ddd;
-        border-radius: 5px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
         font-family: inherit;
         resize: none;
       }
@@ -196,7 +301,7 @@
         background-color: var(--dark);
       }
 
-      /* Footer */
+      /* FOOTER */
       footer {
         background-color: var(--dark);
         color: white;
@@ -205,20 +310,75 @@
         font-size: 0.9em;
       }
 
-      @media (max-width: 768px) {
-        nav ul {
-          flex-wrap: wrap;
-          justify-content: center;
+      /* BACK TO TOP BUTTON */
+      #backToTop {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 1.5em;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease, transform 0.3s ease,
+          background-color 0.4s, color 0.4s;
+        z-index: 999;
+      }
+
+      #backToTop.show {
+        opacity: 1;
+        pointer-events: all;
+        animation: pulse 1.8s infinite ease-in-out;
+      }
+
+      #backToTop.light {
+        background-color: var(--secondary);
+        color: white;
+      }
+
+      #backToTop.dark {
+        background-color: white;
+        color: var(--dark);
+      }
+
+      #backToTop:hover {
+        transform: scale(1.1);
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(11, 181, 244, 0.6);
         }
-        header {
-          padding: 6em 1.5em 4em;
+        70% {
+          box-shadow: 0 0 0 12px rgba(11, 181, 244, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(11, 181, 244, 0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        header h1 {
+          font-size: 1.8em;
+        }
+        main section {
+          padding: 2.5em 1.5em;
+        }
+        #contacts li {
+          display: block;
+          margin: 10px 0;
         }
       }
     </style>
   </head>
 
   <body>
-    <nav>
+    <!-- Navigation -->
+    <nav id="navbar">
       <ul>
         <li><a href="#profile">Profile</a></li>
         <li><a href="#education">Education</a></li>
@@ -229,43 +389,168 @@
       </ul>
     </nav>
 
-    <header id="profile">
-      <img src="./img/lounes.png" alt="Lounes Moussaoui" />
+    <!-- Header -->
+    <header id="profile" data-aos="fade-down">
+      <div class="overlay"></div>
+      <img src="./img/lounes.png" alt="Lounes Moussaoui" id="profile-img" />
       <h1>Lounes Moussaoui</h1>
       <p>
-        Self-motivated computer scientist passionate about innovation, automation, and development. 
-        A fast learner striving to deliver high-quality tech solutions and enhance business performance.
+        Self-motivated computer scientist passionate about automation,
+        development, and innovation. A fast learner striving to deliver
+        high-quality, scalable, and efficient technical solutions.
       </p>
+
+      <!-- Contact Info -->
+      <article id="contacts" class="contact-list" data-aos="fade-up">
+        <ul>
+          <li>
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:lounes.moussaoui@gmail.com" target="_blank"
+              >lounes.moussaoui@gmail.com</a
+            >
+          </li>
+          <li>
+            <i class="fab fa-whatsapp"></i>
+            <a href="https://wa.me/971523022336/" target="_blank"
+              >+971 523 022336</a
+            >
+          </li>
+          <li>
+            <i class="fas fa-map-marker-alt"></i>
+            <a href="https://goo.gl/maps/FVSagto7yUVc8Jn18" target="_blank"
+              >Abu Dhabi, United Arab Emirates (UAE)</a
+            >
+          </li>
+        </ul>
+      </article>
+
       <div class="socials">
-        <a href="https://facebook.com/moussaouilounes16" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://twitter.com/lounesmoussaoui" target="_blank"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://linkedin.com/in/lounes-moussaoui-783a69195" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://github.com/Lounes-03" target="_blank"><i class="fab fa-github-alt"></i></a>
+        <a href="https://facebook.com/moussaouilounes16" target="_blank"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+        <a href="https://twitter.com/lounesmoussaoui" target="_blank"
+          ><i class="fab fa-x-twitter"></i
+        ></a>
+        <a
+          href="https://linkedin.com/in/lounes-moussaoui-783a69195"
+          target="_blank"
+          ><i class="fab fa-linkedin-in"></i
+        ></a>
+        <a href="https://github.com/Lounes-03" target="_blank"
+          ><i class="fab fa-github-alt"></i
+        ></a>
       </div>
     </header>
 
+    <!-- Main -->
     <main>
-      <section id="education">
+      <section id="education" data-aos="fade-up">
         <h3>Education</h3>
-        <p><strong>American University of Sharjah (2017–2021)</strong> — Bachelor of Science in Computer Science</p>
+        <p>
+          <strong>American University of Sharjah (2017–2021)</strong> — Bachelor
+          of Science in Computer Science
+        </p>
         <ul class="job-description">
           <li>Merit Scholarship recipient for four consecutive years</li>
           <li>Finalist in the NGN 110 Competition</li>
         </ul>
-      </section>
 
-      <section id="experience">
-        <h3>Work Experience</h3>
-        <p><strong>Senior Application Analyst — Al Ramz PSJC (Aug 2021 – Present)</strong></p>
+        <p>
+          <strong
+            >Faculty of Medicine at Algeria (Ziania), Algiers, Algeria
+            (2016–2027)</strong
+          >
+        </p>
         <ul class="job-description">
-          <li>Resolved trading and finance issues with cross-department teams</li>
-          <li>Automated system deployments and daily reports</li>
-          <li>Developed and tested applications for production environments</li>
-          <li>Created and maintained process documentation (BRDs)</li>
+          <li>First year Pharmacy</li>
+        </ul>
+      </section>
+      <section id="experience" data-aos="fade-up">
+        <h3>Work Experience</h3>
+
+        <p>
+          <strong
+            >Senior Application Analyst — Al Ramz PSJC (Aug 2021 –
+            Present)</strong
+          >
+        </p>
+        <ul class="job-description">
+          <li>Resolved trading and finance system issues</li>
+          <li>Automated deployments and reporting MIS</li>
+          <li>Validated and tested QA releases</li>
+          <li>Supported investment apps and production deployment</li>
+          <li>Maintained BRDs and technical documentation</li>
+        </ul>
+
+        <p>
+          <strong
+            >Digital Marketing Specialist — Hotel OM, Algeria (Oct 2021 – May
+            2022)</strong
+          >
+        </p>
+        <ul class="job-description">
+          <li>Managed and designed web services</li>
+          <li>Led digital marketing campaigns</li>
+        </ul>
+
+        <p>
+          <strong style="font-style: italic"
+            >Intern Researcher- University of Virginia, USA (June 2020 – April
+            2021) (Online)</strong
+          ><br />
+        </p>
+        <ul class="job-description">
+          <li>
+            Developed algorithm to optimize microfluid cooling networks for 3D
+            integrated circuits
+          </li>
+          <li>Integrated thermal simulators</li>
+        </ul>
+
+        <p>
+          <strong style="font-style: italic">
+            Student Assistant- Career Services Office, AUS, Sharjah (February –
+            May 2020)</strong
+          ><br />
+        </p>
+        <ul class="job-description">
+          <li>Data cleaning and updating company contact lists</li>
+          <li>Benchmarking employer engagement</li>
+          <li>Contacted companies for AUS Career Fair</li>
         </ul>
       </section>
 
-      <section id="skills">
+      <!-- ✅ New sections -->
+      <section id="training" data-aos="fade-up">
+        <h3>Training and Certificates</h3>
+        <ul class="job-description">
+          <li>January 2021 — Computer Repair Technician Certification</li>
+          <li>
+            June 2021 — Mobile Phone Repair Certification (Software + Hardware)
+          </li>
+
+          <li>October 2022 — CISI UAE Financial Rules and Regulations</li>
+          <li>October 2022 — CISI Operational Risk</li>
+        </ul>
+      </section>
+
+      <section id="crsproject" data-aos="fade-up">
+        <h3>Relevant Course Projects</h3>
+        <ul class="job-description">
+          <li>
+            Smartphone-based platform for counting white blood cells (OpenCV)
+          </li>
+          <li>PAWS — IoT-based Pet Monitoring System</li>
+          <li>Hotel booking web application using Django</li>
+          <li>Heart failure prediction using ML algorithms</li>
+          <li>
+            Co-Fight — Covid-19 Equipment Management System for AUS Health
+            Center
+          </li>
+        </ul>
+      </section>
+
+      <section id="skills" data-aos="fade-up">
         <h3>Skills</h3>
         <div class="skills">
           <div class="column">
@@ -273,17 +558,19 @@
             <ul>
               <li>Python, Java, C++, JavaScript</li>
               <li>SQL, PL/SQL, Oracle, MySQL</li>
-              <li>Web Dev: HTML, CSS, Bootstrap</li>
+              <li>HTML, CSS, Bootstrap</li>
+              <li>Unix/Linux Commands</li>
               <li>DevOps, Automation, APIs</li>
-              <li>OpenCV, Machine Learning</li>
+              <li>Software testing</li>
+              <li>Market Data Feed Technologies, FIX Protocol</li>
             </ul>
           </div>
           <div class="column">
             <h4>Soft Skills</h4>
             <ul>
-              <li>Analytical thinking & teamwork</li>
-              <li>Time management under pressure</li>
-              <li>Creative problem-solving</li>
+              <li>Strong Integrity, ethical standards, and teamwork</li>
+              <li>Track record of delivering results with deadlines</li>
+              <li>Analytical Thinking and creative problem-solving</li>
             </ul>
             <h4>Languages</h4>
             <ul>
@@ -294,30 +581,90 @@
           </div>
         </div>
       </section>
-
-      <section id="additional">
+      <section id="additional" data-aos="fade-up" data-aos-delay="200">
         <h3>Additional Information</h3>
         <ul class="job-description">
+          <li>Accomplished the AUS Academic Support Center Certificate 2017</li>
+          <li>Executive assistant in the Algerian Cultural Club</li>
           <li>Attended the Future Blockchain Summit 2018</li>
-          <li>Participated in SPS Automation Middle East 2018</li>
-          <li>Organized local government elections in 2021</li>
+          <li>Attended several workshops related to computer science</li>
+
+          <li>Participated in SPS Automation Middle East Conference 2018</li>
           <li>Invited by the UAE Ministry of Defense to Dubai Airshow 2019</li>
+          <li>Supervised in local elections in Algeria (2021)</li>
         </ul>
       </section>
 
-      <section id="contact">
+      <section id="contact" data-aos="fade-up" data-aos-delay="250">
         <h3>Contact Me</h3>
         <form action="https://formspree.io/f/xqknppwp" method="POST">
           <input type="text" name="name" placeholder="Your Name" required />
-          <input type="email" name="_replyto" placeholder="Your Email" required />
-          <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+          <input
+            type="email"
+            name="_replyto"
+            placeholder="Your Email"
+            required
+          />
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            rows="5"
+            required
+          ></textarea>
           <input type="submit" value="Send Message" />
         </form>
       </section>
     </main>
 
-    <footer>
-      © 2025 Lounes Moussaoui — All Rights Reserved
-    </footer>
+    <footer>© 2025 Lounes Moussaoui — All Rights Reserved</footer>
+
+    <!-- Back To Top Button -->
+    <button id="backToTop" title="Back to Top" class="light">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script>
+      AOS.init({ duration: 1000, once: true, offset: 100 });
+
+      const img = document.getElementById("profile-img");
+      document.addEventListener("mousemove", (e) => {
+        const x = (window.innerWidth / 2 - e.pageX) / 30;
+        const y = (window.innerHeight / 2 - e.pageY) / 30;
+        img.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+      });
+      document.addEventListener("mouseleave", () => {
+        img.style.transform = "translate(0,0) scale(1)";
+      });
+
+      const backToTop = document.getElementById("backToTop");
+      const navbar = document.getElementById("navbar");
+
+      window.addEventListener("scroll", () => {
+        const top = document.documentElement.scrollTop;
+        const headerHeight = document.querySelector("header").offsetHeight;
+
+        // Navbar transparency
+        if (top > 100) navbar.classList.add("scrolled");
+        else navbar.classList.remove("scrolled");
+
+        // Back to top visibility
+        if (top > 400) backToTop.classList.add("show");
+        else backToTop.classList.remove("show");
+
+        // Color adaptation
+        if (top < headerHeight - 100) {
+          backToTop.classList.remove("dark");
+          backToTop.classList.add("light");
+        } else {
+          backToTop.classList.remove("light");
+          backToTop.classList.add("dark");
+        }
+      });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    </script>
   </body>
 </html>
