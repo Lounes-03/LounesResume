@@ -1,384 +1,323 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" media="all" href="styles.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Lounes Moussaoui | Resume</title>
 
-    <link rel="icon" href="./img/favicon.ico" />
-    <script
-      src="https://kit.fontawesome.com/fb70b32410.js"
-      crossorigin="anonymous"
-    ></script>
-    <title>Lounes Moussaoui-Resume</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/fb70b32410.js" crossorigin="anonymous"></script>
+
+    <style>
+      :root {
+        --primary: #007b9e;
+        --secondary: #0bb5f4;
+        --dark: #0f3057;
+        --light: #f8f9fa;
+        --accent: #eaf6ff;
+      }
+
+      * {
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        color: #222;
+        background-color: var(--light);
+      }
+
+      /* Navbar */
+      nav {
+        position: fixed;
+        width: 100%;
+        background-color: rgba(0, 123, 158, 0.95);
+        color: white;
+        display: flex;
+        justify-content: center;
+        padding: 0.6em 0;
+        z-index: 1000;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 1.5em;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 500;
+        transition: 0.3s;
+      }
+
+      nav ul li a:hover {
+        color: var(--accent);
+      }
+
+      /* Hero Section */
+      header {
+        background: linear-gradient(to bottom right, var(--dark), var(--primary));
+        color: white;
+        text-align: center;
+        padding: 8em 2em 5em;
+        background-image: url('./img/background.jpg');
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+
+      header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.55);
+      }
+
+      header * {
+        position: relative;
+        z-index: 1;
+      }
+
+      header img {
+        border-radius: 50%;
+        width: 140px;
+        border: 3px solid white;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      }
+
+      header h1 {
+        font-size: 2em;
+        margin: 0.8em 0 0.3em;
+      }
+
+      header p {
+        max-width: 700px;
+        margin: auto;
+        font-weight: 300;
+      }
+
+      /* Social Icons */
+      .socials a {
+        color: white;
+        margin: 0 10px;
+        font-size: 1.3em;
+        transition: 0.3s;
+      }
+
+      .socials a:hover {
+        color: var(--secondary);
+        transform: scale(1.2);
+      }
+
+      /* Section styling */
+      main section {
+        padding: 4em 10%;
+        background-color: white;
+        margin-bottom: 1em;
+        border-radius: 12px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+      }
+
+      main section:hover {
+        transform: translateY(-5px);
+      }
+
+      h3 {
+        color: var(--dark);
+        border-left: 5px solid var(--secondary);
+        padding-left: 10px;
+        text-transform: uppercase;
+      }
+
+      ul.job-description li {
+        margin-bottom: 6px;
+      }
+
+      ul.job-description li::before {
+        content: "✔";
+        color: var(--secondary);
+        padding-right: 10px;
+      }
+
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2em;
+      }
+
+      .skills .column {
+        flex: 1 1 250px;
+      }
+
+      .skills h4 {
+        color: var(--primary);
+        margin-bottom: 0.5em;
+      }
+
+      /* Contact Section */
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        max-width: 600px;
+        margin: 2em auto;
+      }
+
+      input, textarea {
+        padding: 1em;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-family: inherit;
+        resize: none;
+      }
+
+      input[type="submit"] {
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      input[type="submit"]:hover {
+        background-color: var(--dark);
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark);
+        color: white;
+        text-align: center;
+        padding: 1.5em;
+        font-size: 0.9em;
+      }
+
+      @media (max-width: 768px) {
+        nav ul {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        header {
+          padding: 6em 1.5em 4em;
+        }
+      }
+    </style>
   </head>
+
   <body>
-    <header>
-      <nav>
-        <ul class="navbar">
-          <li class="nav-item"><a href="#iprofile">Profile</a></li>
-          <li class="nav-item"><a href="#education">Education</a></li>
-          <li class="nav-item"><a href="#experience">Experience</a></li>
-          <li class="nav-item"><a href="#skills">Skills</a></li>
-          <li class="nav-item"><a href="#Additional">Additional Info</a></li>
-          <li class="nav-item"><a href="#contactme">Contact Me</a></li>
-        </ul>
-      </nav>
-      <div class="menubar">
-        <a style="color: white">Lounes Moussaoui</a>
-      </div>
-      <! –– Profile Image ––>
-      .
-      <div id="iprofile">
-        <img src="./img/lounes.png" />
-      </div>
-
-      <section>
-        <div
-          style="
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 10px;
-          "
-        >
-          <p style="font-size: x-large; color: white; text-align: center">
-            <strong>
-              Self-motivated computer scientist eager to explore the various
-              fields related to computer science. A fast learner with
-              exceptional skills in programming languages, striving to add value
-              to the IT department at your esteemed company.
-            </strong>
-          </p>
-        </div>
-        <a href="https://facebook.com/moussaouilounes16" target="_blank">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-      <a href="https://twitter.com/lounesmoussaoui" target="_blank">
-    <i class="fab fa-x-twitter"></i> 
-</a>
-
-        <a
-          href="https://www.linkedin.com/in/lounes-moussaoui-783a69195/"
-          target="_blank"
-        >
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-        <a href="https://github.com/Lounes-03" target="_blank">
-          <i class="fab fa-github-alt"></i>
-        </a>
-      </section>
-    </header>
-
-    <article id="contacts">
+    <nav>
       <ul>
-        <li>
-          <i class="fas fa-envelope"></i>
-          <a
-            style="color: black"
-            href="mailto:lounes.moussaoui@gmail.com"
-            target="_blank"
-            >lounes.moussaoui@gmail.com</a
-          >
-        </li>
-        <li>
-          <i class="fa-brands fa-whatsapp"></i>
-          <a
-            style="color: black"
-            href="https://wa.me/971523022336/"
-            target="_blank"
-            >+971 523 022336</a
-          >
-        </li>
-        <li>
-          <i class="fas fa-map-signs"></i>
-          <a
-            style="color: black"
-            href="https://goo.gl/maps/FVSagto7yUVc8Jn18"
-            target="_blank"
-            >Abu Dhabi, United Arab Emirates (UAE)</a
-          >
-        </li>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#additional">Additional</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
-    </article>
+    </nav>
+
+    <header id="profile">
+      <img src="./img/lounes.png" alt="Lounes Moussaoui" />
+      <h1>Lounes Moussaoui</h1>
+      <p>
+        Self-motivated computer scientist passionate about innovation, automation, and development. 
+        A fast learner striving to deliver high-quality tech solutions and enhance business performance.
+      </p>
+      <div class="socials">
+        <a href="https://facebook.com/moussaouilounes16" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/lounesmoussaoui" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://linkedin.com/in/lounes-moussaoui-783a69195" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/Lounes-03" target="_blank"><i class="fab fa-github-alt"></i></a>
+      </div>
+    </header>
 
     <main>
       <section id="education">
         <h3>Education</h3>
-
-        <article>
-          <div class="uni">
-            <span>2017-2021</span>
-            <strong style="font-style: italic"
-              >American University of Sharjah (AUS), Sharjah, UAE
-            </strong>
-          </div>
-          <div class="descrition">Bachelor of Science in Computer Science</div>
-          <p></p>
-          <ul class="job-description">
-            <li>
-              Received the AUS Merit Scholarship for four consecutive years
-            </li>
-            <li>Finalist in the NGN 110 Competition at AUS, Sharjah, UAE</li>
-          </ul>
-        </article>
-        <br />
-        <article>
-          <div class="uni">
-            <span>2016-2017</span>
-            <strong style="font-style: italic"
-              >Faculty of Medicine at Algeria (Ziania), Algiers, Algeria</strong
-            >
-          </div>
-          <div>First year Pharmacy</div>
-        </article>
+        <p><strong>American University of Sharjah (2017–2021)</strong> — Bachelor of Science in Computer Science</p>
+        <ul class="job-description">
+          <li>Merit Scholarship recipient for four consecutive years</li>
+          <li>Finalist in the NGN 110 Competition</li>
+        </ul>
       </section>
 
       <section id="experience">
         <h3>Work Experience</h3>
-        <article>
-          <div class="job">
-            <span>August 2021 - Present</span>
-            <strong style="font-style: italic">Al Ramz PSJC, Abudhabi</strong
-            ><br />
-            <strong>Position:</strong> Senior Application Analyst
-          </div>
-          <div>
-            <ul class="job-description">
-              <li>
-                Work with Investment, Trading and IT professional resolving
-                issues resulting from Trading, Finance, application checks,
-                providing timely feedback and high availability
-              </li>
-              <li>
-                Supporting Investment applications, alert monitoring, production
-                deployment, and environment support for the trading business.
-              </li>
-              <li>
-                Implement automation for system deployment, repititive tasks,
-                and building reports
-              </li>
-              <li>
-                Build and maintain support documentation for all processes
-                (BRDs)
-              </li>
-              <li>
-                Test and validate all changes and bug fixes before moving to
-                production (QA).
-              </li>
-              <li>
-                Carry out other duties as assigned for business continuity
-                processes.
-              </li>
-            </ul>
-          </div>
-        </article>
-        <br />
-
-        <article>
-          <div class="job">
-            <span>october 2021 – April 2022</span>
-            <strong style="font-style: italic">Hotel OM, Algeria</strong><br />
-            <strong>Position:</strong> Digital Marketing Specialist
-          </div>
-          <div>
-            <ul class="job-description">
-              <li>Manage and design web services</li>
-              <li>Digital Marketing</li>
-            </ul>
-          </div>
-        </article>
-        <br />
-        <article>
-          <div class="job">
-            <span>June 2020 – April 2021 (online)</span>
-            <strong style="font-style: italic"
-              >University of Virginia, USA</strong
-            ><br />
-            <strong>Position:</strong> Intern researcher
-          </div>
-          <div>
-            <ul class="job-description">
-              <li>
-                Develop an algorithm to optimize microfluid cooling networks for
-                3D integrated circuits (C /C++)
-              </li>
-              <li>Integrate thermal simulators</li>
-            </ul>
-          </div>
-        </article>
-        <br />
-
-        <article>
-          <div class="job">
-            <span>February-May 2020</span>
-            <strong style="font-style: italic"
-              >Career Services Office, AUS, Sharjah</strong
-            ><br />
-            <strong>Position:</strong> Student Assistant
-          </div>
-          <div>
-            <ul class="job-description">
-              <li>Data cleaning and update list of contacts for companies</li>
-              <li>Benchmarking</li>
-              <li>Contact companies for the AUS Career Fair</li>
-            </ul>
-          </div>
-        </article>
-
-        <br />
-      </section>
-
-      <section id="training">
-        <h3>TRAINING AND CERTIFICATES</h3>
-        <div class="training">
-          <span>January 2021</span>
-          <strong style="font-style: italic"
-            >Computer repair technician certification
-          </strong>
-        </div>
-        <div class="training">
-          <span>June 2021</span>
-          <strong style="font-style: italic"
-            >Mobile phone repair certification (Software+ Hardware)
-          </strong>
-        </div>
-        <div class="training">
-          <span>October 2022</span>
-          <strong style="font-style: italic"
-            >The CISI UAE Financial Rules and Regulations
-          </strong>
-        </div>
-        <div class="training">
-          <span>October 2022</span>
-          <strong style="font-style: italic">The CISI Operational Risk </strong>
-        </div>
-      </section>
-
-      <section id="crsproject">
-        <h3>RELEVANT COURSE PROJECTS</h3>
-        <div class="skills">
-          <div class="column">
-            <ul>
-              <li>
-                A smartphone-based platform for counting patients white blood
-                cell at point of care (OpenCV)
-              </li>
-              <li>
-                Pets advanced watching system (PAWS) an IoT-based application
-              </li>
-              <li>Hotel booking web application using Django</li>
-              <li>Heart failure prediction using machine learning algorithm</li>
-              <li>
-                Co-Fight a management system for Covid-19 Equipment for the AUS
-                health center
-              </li>
-            </ul>
-          </div>
-        </div>
+        <p><strong>Senior Application Analyst — Al Ramz PSJC (Aug 2021 – Present)</strong></p>
+        <ul class="job-description">
+          <li>Resolved trading and finance issues with cross-department teams</li>
+          <li>Automated system deployments and daily reports</li>
+          <li>Developed and tested applications for production environments</li>
+          <li>Created and maintained process documentation (BRDs)</li>
+        </ul>
       </section>
 
       <section id="skills">
         <h3>Skills</h3>
         <div class="skills">
           <div class="column">
-            <h4>Computer Skills</h4>
+            <h4>Technical</h4>
             <ul>
-              <li>Visual C++</li>
-              <li>Java programming</li>
-              <li>JavaScript</li>
-              <li>Python</li>
-              <li>SQL, PL/SQL</li>
-              <li>Unix/Linux programming</li>
-              <li>HTML, CSS and Bootstrap</li>
-              <li>Image processing with OpenCv</li>
-              <li>Machine learning and data mining</li>
-              <li>Market Data Feed Technologies, FIX Protocol</li>
-              <li>Software testing</li>
-              <li>DevOps Tools</li>
-              <li>Unified Modeling Language (UML)</li>
-              <li>Oracle Database, Microsoft Access</li>
-              <li>Minitab/ Maple</li>
+              <li>Python, Java, C++, JavaScript</li>
+              <li>SQL, PL/SQL, Oracle, MySQL</li>
+              <li>Web Dev: HTML, CSS, Bootstrap</li>
+              <li>DevOps, Automation, APIs</li>
+              <li>OpenCV, Machine Learning</li>
             </ul>
           </div>
           <div class="column">
-            <h4>Soft skills</h4>
+            <h4>Soft Skills</h4>
             <ul>
-              <li>Strong decision-making and problem-solving skills</li>
-              <li>Able to prioritize tasks and workloads</li>
-              <li>Track record of delivering results with deadlines</li>
-              <li>
-                Strong Integrity and teamwork through promoting collaboration
-                and ethical standards.
-              </li>
+              <li>Analytical thinking & teamwork</li>
+              <li>Time management under pressure</li>
+              <li>Creative problem-solving</li>
             </ul>
-          </div>
-          <br />
-          <div style="margin-left: 10em">
             <h4>Languages</h4>
-            <p>🇸🇦 Arabic - Native speaker</p>
-            <p>🇬🇧 English - Advanced</p>
-            <p>🇫🇷 French - Advanced</p>
+            <ul>
+              <li>Arabic — Native</li>
+              <li>English — Advanced</li>
+              <li>French — Advanced</li>
+            </ul>
           </div>
         </div>
       </section>
-      <section id="Additional">
-        <h3>Additional Info</h3>
-        <article>
-          <div>
-            <ul class="job-description">
-              <li>Attended the Future Blockchain Summit, 2018, Dubai, UAE</li>
-              <li>
-                Attended and participated SPS Automation Middle East Conference,
-                2018 Dubai, UAE
-              </li>
-              <li>Attended several workshops related to computer science</li>
-              <li>Executive assistant in the Algerian Cultural Club</li>
-              <li>
-                Organized and supervised a local government election, November
-                2021, Algeria
-              </li>
-              <li>Invited by the Ministry of Defense to Dubai Airshow, 2019</li>
-              <li>
-                Accomplished the AUS Academic Support Center Certificate, 2017
-              </li>
-            </ul>
-          </div>
-        </article>
+
+      <section id="additional">
+        <h3>Additional Information</h3>
+        <ul class="job-description">
+          <li>Attended the Future Blockchain Summit 2018</li>
+          <li>Participated in SPS Automation Middle East 2018</li>
+          <li>Organized local government elections in 2021</li>
+          <li>Invited by the UAE Ministry of Defense to Dubai Airshow 2019</li>
+        </ul>
       </section>
-      <section id="contactme">
+
+      <section id="contact">
         <h3>Contact Me</h3>
-        <form class="cf" action="https://formspree.io/f/xqknppwp" method="POST">
-          <div class="half left cf">
-            <input
-              type="text"
-              id="input-name"
-              placeholder="Name"
-              name="name"
-              required
-            />
-
-            <input
-              type="email"
-              name="_replyto"
-              id="input-email"
-              placeholder="Email address"
-              required
-            />
-
-            <textarea
-              name="message"
-              id="input-message"
-              placeholder="Your Message"
-              required
-            ></textarea>
-          </div>
-
-          <input type="submit" value="Submit" id="input-submit" />
+        <form action="https://formspree.io/f/xqknppwp" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="_replyto" placeholder="Your Email" required />
+          <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+          <input type="submit" value="Send Message" />
         </form>
       </section>
     </main>
+
     <footer>
-      <p>Created by: &copy Lounes Moussaoui / 2021</p>
+      © 2025 Lounes Moussaoui — All Rights Reserved
     </footer>
   </body>
 </html>
