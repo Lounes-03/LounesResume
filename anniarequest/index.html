@@ -1,38 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html lang="en" data-bs-theme="light" >
+    <head>
+        <title>Request Date👉🏻👈🏻</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://vassabiii.lovestoblog.com/css/style.css">
 
-    <title>For Annia ❤️</title>
+        <!-- Bootstrap CSS v5.3.8 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+            crossorigin="anonymous"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Bungee&family=Geist+Pixel:ELSH@100&display=swap" rel="stylesheet">
+        <style>
+        .font-geist-pixel {
+            font-family: "Geist Pixel", sans-serif;
+        }
+        .font-black-ops {
+              font-family: "Bungee", sans-serif;
+        }
+        .say_yes:hover {
+        background-color:rgb(244, 62, 62);
+        color: white;
 
-    <link rel="stylesheet" href="style.css">
-</head>
+}
+    </style>
+    </head>
 
-<body>
-
-    <div class="container">
-
-        <div class="heart">❤️</div>
-
-        <h1>Hey Annia...</h1>
-
-        <p class="question">
-            I have a very important question for you.
-        </p>
-
-        <h2>
-            Would you go on a date with me? 🥰
-        </h2>
-
-        <div class="buttons">
-            <button id="yesBtn">Yes ❤️</button>
-            <button id="noBtn">No 😢</button>
+    <body>
+        <header>
+            <!-- place navbar here -->
+        </header>
+        <main>
+           <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="container-fluid mt-5" style="width:520px; height:200px; background-color:#ffffffd1; color:#ff95a7; border-radius:10px; box-shadow: 0 0 10px pink;" >
+        <div style="text-align:center; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            
+            <h2 class="font-black-ops mb-4">🌸Will you go on a date with me?🌸</h2>
+            
+            <div class="position-relative d-flex gap-3 justify-content-center align-items-center" style="width: 100%; min-height: 50px;">
+                <a href="https://vassabiii.lovestoblog.com/request/sayyes" class="btn btn-outline-danger say_yes" style="width: 100px; z-index: 10;">Yes</a>
+                
+                <button type="button" id="runaway-no" class="btn btn-outline-danger" style="width: 100px; transition: all 0.1s ease; z-index: 10;">No</button>
+            </div>
         </div>
-
     </div>
+</div>
 
-    <script src="script.js"></script>
+<script>
+    const noButton = document.getElementById('runaway-no');
 
-</body>
+    function runaway() {
+        // Get random coordinates based on the browser window size
+        const x = Math.random() * (window.innerWidth - noButton.offsetWidth - 20);
+        const y = Math.random() * (window.innerHeight - noButton.offsetHeight - 20);
+        
+        // Switch position to fixed/absolute so it can break free and jump anywhere
+        noButton.style.position = 'fixed';
+        noButton.style.left = `${x}px`;
+        noButton.style.top = `${y}px`;
+    }
+
+    // Trigger on click as requested
+    noButton.addEventListener('click', runaway);
+
+    // OPTIONAL: Trigger on mouse hover too so they can't even touch it!
+    noButton.addEventListener('mouseover', runaway);
+</script>
+        </main>
+        <footer>
+            <!-- place footer here -->
+        </footer>
+        <!-- Bootstrap JavaScript Bundle (includes Popper) -->
+        
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"
+        ></script>
+    </body>
 </html>
