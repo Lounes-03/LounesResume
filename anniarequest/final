@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light" >
+    <head>
+        <title>Request Date👉🏻👈🏻</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://vassabiii.lovestoblog.com/css/style.css">
+
+        <!-- Bootstrap CSS v5.3.8 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+            crossorigin="anonymous"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Bungee&family=Geist+Pixel:ELSH@100&display=swap" rel="stylesheet">
+        <style>
+        .font-geist-pixel {
+            font-family: "Geist Pixel", sans-serif;
+        }
+        .font-black-ops {
+              font-family: "Bungee", sans-serif;
+        }
+        .say_yes:hover {
+        background-color:rgb(244, 62, 62);
+        color: white;
+
+}
+    </style>
+    </head>
+
+    <body>
+        <header>
+            <!-- place navbar here -->
+        </header>
+        <main>
+           <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<style>
+    body {
+        background-color: #fff0f2;
+        font-family: 'Poppins', sans-serif;
+        background-image: radial-gradient(#ffccd5 1px, transparent 1px);
+        background-size: 20px 20px;
+        overflow-x: hidden;
+    }
+    
+    /* កំណត់ទីតាំង Canvas សម្រាប់ព្រិល */
+    #snow-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .container {
+        position: relative;
+        z-index: 2; /* ឱ្យ Card នៅពីលើព្រិលធ្លាក់ */
+    }
+    
+    .summary-card {
+        width: 440px;
+        background: rgba(255, 255, 255, 0.92);
+        border-radius: 28px;
+        box-shadow: 0 15px 35px rgba(255, 182, 193, 0.4);
+        padding: 45px 35px;
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(5px);
+        position: relative;
+    }
+
+    .yay-title {
+        font-family: 'Playfair Display', serif;
+        color: #b83266;
+        font-size: 56px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .details-box {
+        background: rgba(248, 249, 250, 0.75);
+        border-radius: 20px;
+        padding: 24px;
+        border: 1px solid rgba(0, 0, 0, 0.03);
+    }
+
+    .detail-item {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        font-size: 18px;
+        color: #333333;
+        font-weight: 500;
+    }
+
+    .detail-icon {
+        font-size: 26px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+    }
+
+    .waiting-text {
+        font-family: 'Playfair Display', serif;
+        color: #b83266;
+        font-size: 26px;
+        font-weight: 500;
+    }
+
+    .footer-joke {
+        font-family: 'Poppins', sans-serif;
+        font-style: italic;
+        font-size: 13px;
+        color: #888888;
+        line-height: 1.5;
+        font-weight: 300;
+    }
+</style>
+
+<canvas id="snow-canvas"></canvas>
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="summary-card text-center animate__animated animate__fadeIn">
+        
+        <h1 class="yay-title">YAY!! You are booked! <span style="font-size: 40px;">💖</span></h1>
+
+       
+
+        <div class="my-4">
+            <h3 class="waiting-text">I can't wait to see you! 🌷✨</h3>
+        </div>
+
+        <div class="mt-4 pt-2">
+            <p class="footer-joke px-2">
+                (👀)
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ----------------------------------------------------
+    // ១. ប្រព័ន្ធបង្កើតព្រិលធ្លាក់ (Romantic Snow Effect)
+    // ----------------------------------------------------
+    const canvas = document.getElementById('snow-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let screenWidth = window.innerWidth;
+    let screenHeight = window.innerHeight;
+    canvas.width = screenWidth;
+    canvas.height = screenHeight;
+
+    window.addEventListener('resize', () => {
+        screenWidth = window.innerWidth;
+        screenHeight = window.innerHeight;
+        canvas.width = screenWidth;
+        canvas.height = screenHeight;
+    });
+
+    const maxFlakes = 50;
+    const flakes = [];
+
+    for (let i = 0; i < maxFlakes; i++) {
+        flakes.push({
+            x: Math.random() * screenWidth,
+            y: Math.random() * screenHeight,
+            r: Math.random() * 3 + 1,
+            d: Math.random() * maxFlakes
+        });
+    }
+
+    function drawSnow() {
+        ctx.clearRect(0, 0, screenWidth, screenHeight);
+        ctx.fillStyle = 'rgba(255, 140, 150, 0.5)'; // គ្រាប់ព្រិលពណ៌ផ្កាឈូកស្រាល
+        ctx.beginPath();
+        for (let i = 0; i < maxFlakes; i++) {
+            const f = flakes[i];
+            ctx.moveTo(f.x, f.y);
+            ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
+        }
+        ctx.fill();
+        moveSnow();
+    }
+
+    function moveSnow() {
+        for (let i = 0; i < maxFlakes; i++) {
+            const f = flakes[i];
+            f.y += Math.cos(f.d) + 1 + f.r / 2;
+            f.x += Math.sin(0.1) * 0.5;
+
+            if (f.y > screenHeight) {
+                flakes[i] = { x: Math.random() * screenWidth, y: 0, r: f.r, d: f.d };
+            }
+        }
+    }
+    setInterval(drawSnow, 25);
+
+    // ----------------------------------------------------
+    // ២. ប្រព័ន្ធបាញ់បេះដូងភ្ញាក់ផ្អើល (Pure JS Surprise Floating Hearts)
+    // ----------------------------------------------------
+    function createHeartSurprise() {
+        // បាញ់បេះដូងចំនួន 35 គ្រាប់រាយប៉ាយគ្នា
+        for (let i = 0; i < 35; i++) {
+            setTimeout(() => {
+                const heart = document.createElement('div');
+                // ផ្លាស់ប្តូរពណ៌បេះដូងឱ្យមានភាពរស់រវើក (❤️ ឬ 💖)
+                heart.innerHTML = Math.random() > 0.5 ? '❤️' : '💖';
+                heart.style.position = 'fixed';
+                heart.style.bottom = '-20px';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = Math.random() * 20 + 20 + 'px'; // ទំហំចន្លោះពី 20px ទៅ 40px
+                heart.style.userSelect = 'none';
+                heart.style.opacity = '1';
+                heart.style.transition = 'all 3.5s ease-out';
+                heart.style.zIndex = '9999';
+                heart.style.pointerEvents = 'none';
+                
+                document.body.appendChild(heart);
+
+                // បង្ហោះបេះដូងឡើងលើទៅលើមេឃ និងរេទៅឆ្វេងស្តាំតិចៗ
+                setTimeout(() => {
+                    const sideMovement = Math.random() * 300 - 150; // រេឆ្វេងស្តាំ
+                    heart.style.transform = `translate(${sideMovement}px, -120vh) scale(${Math.random() * 0.5 + 1})`;
+                    heart.style.opacity = '0';
+                }, 50);
+
+                // លុបចោលវិញក្រោយពេលហោះផុតអេក្រង់
+                setTimeout(() => {
+                    heart.remove();
+                }, 3500);
+            }, i * 120); // ឱ្យវាចេញមកម្តងមួយៗដេញគ្នា
+        }
+    }
+
+    // រត់មុខងារបាញ់បេះដូងភ្លាមៗនៅពេលដែល Page ដើរជោគជ័យ
+    window.addEventListener('DOMContentLoaded', createHeartSurprise);
+</script>
+        </main>
+        <footer>
+            <!-- place footer here -->
+        </footer>
+        <!-- Bootstrap JavaScript Bundle (includes Popper) -->
+        
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>
